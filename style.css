@@ -68,11 +68,3 @@ button {
     flex: 1 1 auto;
     background-color: white;
 }
-
-.mark-black {
-    background-color: black;
-}
-
-.mark-white {
-    background-color: white;
-}

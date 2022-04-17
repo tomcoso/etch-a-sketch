@@ -29,19 +29,16 @@ function attachHoverListener() {
 
 function paint(feature, event) {
 
-    // to prevent an element to have all classes, to not rely on the css cascade
-    let previousFeature = Array.from((event.currentTarget).classList)[1];
-    (event.currentTarget).classList.remove(previousFeature);
-
     switch (feature) {
         case 'black' :
-            (event.currentTarget).classList.add('mark-black');
+            (event.currentTarget).style.backgroundColor = 'black';
             break;
         case 'white' :
-            (event.currentTarget).classList.add('mark-white');
+            (event.currentTarget).style.backgroundColor = 'white';
             break;
         case 'rainbow' :
-            (event.currentTarget).classList.add('mark-rainbow');
+            let rainbowColor = Math.floor(Math.random()*16777215).toString(16);
+            (event.currentTarget).style.backgroundColor = `#${rainbowColor}`;
             break;
         case 'color' :
             (event.currentTarget).classList.add('mark-color');
