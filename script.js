@@ -19,7 +19,21 @@ function setFeature(newFeature) {
     feature = newFeature;
 }
 
-function attachHoverListener() {
+var hold = false;
+function attachMouseListener() {
+
+    //to prevent dragging and fucking the feature below
+    document.addEventListener('dragstart', (event) => {
+        event.preventDefault()
+    })
+
+    // so it draws only when clicking
+    document.addEventListener('mousedown', () => {
+        hold = true;
+    })
+    document.addEventListener('mouseup', () => {
+        hold = false;
+    })
 
     let paintWrap = (event) => paint(feature, event); //not really relevant anymore, but looks better
 
@@ -28,40 +42,43 @@ function attachHoverListener() {
 }
 
 function paint(feature, event) {
+    console.log(event);
+    if (hold === true) {
 
-    switch (feature) {
-        case 'black' :
-            (event.currentTarget).style.backgroundColor = 'black';
-            break;
-        case 'white' :
-            (event.currentTarget).style.backgroundColor = 'white';
-            break;
-        case 'rainbow' :
-            let rainbowColor = Math.floor(Math.random()*16777215).toString(16);
-            (event.currentTarget).style.backgroundColor = `#${rainbowColor}`;
-            break;
-        case 'color' :
-            (event.currentTarget).classList.add('mark-color');
-            break;
+        switch (feature) {
+            case 'black' :
+                (event.currentTarget).style.backgroundColor = 'black';
+                break;
+            case 'white' :
+                (event.currentTarget).style.backgroundColor = 'white';
+                break;
+            case 'rainbow' :
+                let rainbowColor = Math.floor(Math.random()*16777215).toString(16);
+                (event.currentTarget).style.backgroundColor = `#${rainbowColor}`;
+                break;
+            case 'color' :
+                (event.currentTarget).classList.add('mark-color');
+                break;
+        }
     }
 }
 
 generateGrid();
-attachHoverListener();
+attachMouseListener();
 
-let eraserBtn = document.querySelector('#eraserbtn');
+const eraserBtn = document.querySelector('#eraserbtn');
 eraserBtn.addEventListener('click', () => setFeature('white'));
 
-let blackBtn = document.querySelector('#blackbtn');
+const blackBtn = document.querySelector('#blackbtn');
 blackBtn.addEventListener('click', () => setFeature('black'));
 
-let clearBtn = document.querySelector('#clearbtn');
+const clearBtn = document.querySelector('#clearbtn');
 clearBtn.addEventListener('click', () => {
     let allElements = document.querySelectorAll('.grid-row');
     allElements.forEach((eachElement) => eachElement.remove());
     generateGrid();
-    attachHoverListener();
+    attachMouseListener();
 });
 
-let rainbowBtn = document.querySelector('#rainbowbtn');
+const rainbowBtn = document.querySelector('#rainbowbtn');
 rainbowBtn.addEventListener('click', () => setFeature('rainbow'));

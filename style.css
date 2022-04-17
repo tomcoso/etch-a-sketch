@@ -57,6 +57,7 @@ button {
     border: 5px solid black;
     width: 30em;
     height: 30em;
+    touch-action: none;
 }
 
 .grid-row {
