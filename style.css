@@ -16,19 +16,19 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 1em;
-    margin: 0 -259px;
+    margin: 0 -258px;
     background-color: grey;
 }
 .banner.header {
     justify-content: center;
     font-size: 3em;
     font-weight: bold;
-    margin-top: -9px;
+    margin-top: -8px;
     padding: 0.5em 0em;
 }
 .banner.footer {
     margin-top: auto;
-    margin-bottom: -9px;
+    margin-bottom: -8px;
 }
 .atags .references {
     text-decoration: none;
@@ -50,9 +50,29 @@ button {
 
 #gridcontainer {
     display: flex;
+    flex-direction: column;
     align-self: center;
+    flex-wrap: wrap;
     margin: 2.5em;
     border: 5px solid black;
-    min-width: 30em;
-    min-height: 30em;
+    width: 30em;
+    height: 30em;
+}
+
+.grid-row {
+    display: flex ;
+    flex: 1 1 auto;
+}
+
+.grid-element {
+    flex: 1 1 auto;
+    background-color: white;
+}
+
+.mark-black {
+    background-color: black;
+}
+
+.mark-white {
+    background-color: white;
 }
