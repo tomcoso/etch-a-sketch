@@ -8,6 +8,7 @@ function generateGrid(x = 16) {
         for (let i = 0 ; i < x ; i++) {
             let gridElement = document.createElement('div');
             gridElement.classList.add('grid-element');
+            gridElement.style.filter = 'brightness(100%)'; //inline style to make shadow work
             gridRow.appendChild(gridElement);
         }
     }
@@ -42,22 +43,27 @@ function attachMouseListener() {
 }
 
 function paint(feature, event) {
-    console.log(event);
+    let reBrightnessVal = /\d+/ ; //RegEx searches any number 1 or more times
     if (hold === true) {
 
         switch (feature) {
             case 'black' :
                 (event.currentTarget).style.backgroundColor = 'black';
+                (event.currentTarget).style.filter = 'brightness(100%)';
                 break;
             case 'white' :
                 (event.currentTarget).style.backgroundColor = 'white';
+                (event.currentTarget).style.filter = 'brightness(100%)';
                 break;
             case 'rainbow' :
                 let rainbowColor = Math.floor(Math.random()*16777215).toString(16);
                 (event.currentTarget).style.backgroundColor = `#${rainbowColor}`;
+                (event.currentTarget).style.filter = 'brightness(100%)';
                 break;
-            case 'color' :
-                (event.currentTarget).classList.add('mark-color');
+            case 'shadow' :
+                // grabs prev brighness val and decreases it
+                let prevBrightnessVal = ((event.currentTarget).style.filter).match(reBrightnessVal);
+                (event.currentTarget).style.filter = `brightness(${prevBrightnessVal[0] - 10}%)`;
                 break;
         }
     }
@@ -82,3 +88,6 @@ clearBtn.addEventListener('click', () => {
 
 const rainbowBtn = document.querySelector('#rainbowbtn');
 rainbowBtn.addEventListener('click', () => setFeature('rainbow'));
+
+const shadowBtn = document.querySelector('#shadowbtn');
+shadowBtn.addEventListener('click', () => setFeature('shadow'));
