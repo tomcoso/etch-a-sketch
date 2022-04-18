@@ -3,6 +3,12 @@
 Project part of The Odin Project Foundations curriculum. https://www.theodinproject.com/lessons/foundations-etch-a-sketch
 
 What I learned:
+- How to use basic RegEx
+- How to use mouse events
+- How to prevent default behaviour of events
+- How to request multiple events for one function to work
+- How to implement event listeners efficiently
+- How to change features within the same function
 
 
 Documentation of the process
