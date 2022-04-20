@@ -69,6 +69,14 @@ function paint(feature, event) {
     }
 }
 
+function changeGrid(size) {
+    let allElements = document.querySelectorAll('.grid-row');
+    allElements.forEach((eachElement) => eachElement.remove());
+    generateGrid(size);
+    attachMouseListener();
+}
+var changeGridWrap = () => changeGrid(gridSize.value);
+
 generateGrid();
 attachMouseListener();
 
@@ -79,12 +87,7 @@ const blackBtn = document.querySelector('#blackbtn');
 blackBtn.addEventListener('click', () => setFeature('black'));
 
 const clearBtn = document.querySelector('#clearbtn');
-clearBtn.addEventListener('click', () => {
-    let allElements = document.querySelectorAll('.grid-row');
-    allElements.forEach((eachElement) => eachElement.remove());
-    generateGrid();
-    attachMouseListener();
-});
+clearBtn.addEventListener('click', changeGridWrap);
 
 const rainbowBtn = document.querySelector('#rainbowbtn');
 rainbowBtn.addEventListener('click', () => setFeature('rainbow'));
@@ -106,3 +109,6 @@ buttons.forEach(button => button.addEventListener('click', (event) => {
     if (event.currentTarget.id == 'clearbtn') return ;
     event.currentTarget.classList.toggle('selected');
 }))
+
+const gridSize = document.querySelector('input[type="range"]');
+gridSize.addEventListener('change', changeGridWrap );

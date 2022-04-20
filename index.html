@@ -24,7 +24,16 @@
         <button id="shadowbtn">Shadow</button>
     </div>
 
+    <div id="gridrangecontainer">
     <div id="gridcontainer"></div>
+
+    <div id="rangecontainer">
+        <div>Size</div>
+        <input type="range" min="8" max="64" step="1" value="16"
+            oninput="rangevalue.value=value"></input>
+        <output id="rangevalue">16</output>
+    </div>
+    </div>
 
     <div class="banner footer">
         <div class="atags">
