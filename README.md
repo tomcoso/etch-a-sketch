@@ -9,6 +9,12 @@ What I learned:
 - How to request multiple events for one function to work
 - How to implement event listeners efficiently
 - How to change features within the same function
+- Continued developing css skills
+- How to use pseudoclasses in css
+- How to use js to make a random color hover effect
+- How to effectively use classes and ids on html
+- How to open hyperlinks on new tabs
+- Continued developing project design skills
 
 
 Documentation of the process
