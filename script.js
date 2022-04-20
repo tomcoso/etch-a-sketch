@@ -88,6 +88,21 @@ clearBtn.addEventListener('click', () => {
 
 const rainbowBtn = document.querySelector('#rainbowbtn');
 rainbowBtn.addEventListener('click', () => setFeature('rainbow'));
+rainbowBtn.addEventListener('mouseenter', () => {
+    let randomHexColor = Math.floor(Math.random()*16777215).toString(16);
+    rainbowBtn.style.cssText = `box-shadow: 0 0 25px 0px #${randomHexColor}`;
+})
+rainbowBtn.addEventListener('mouseleave', () => {
+    rainbowBtn.style.cssText = '';
+})
 
 const shadowBtn = document.querySelector('#shadowbtn');
 shadowBtn.addEventListener('click', () => setFeature('shadow'));
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', (event) => {
+
+    buttons.forEach(button => button.classList.remove('selected'));
+    if (event.currentTarget.id == 'clearbtn') return ;
+    event.currentTarget.classList.toggle('selected');
+}))
